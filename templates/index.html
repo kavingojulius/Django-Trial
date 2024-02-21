@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %} Index | Page {% endblock %}
+ 
+{% block content %}
+
+    <div class="container shadow p-3 my-3 rounded-3">        
+        <h3 class="text-center">Index Page</h3>
+    </div>
+
+    <div class="container text-center" >
+        <table class="rounded-4" style="width:80%; margin: auto; padding:50px;">
+            <thead>                
+                    <th></th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Number</th>
+                    <th>Price</th>
+                    <th>Update / Delete</th>  
+                                                
+            </thead>
+            
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.number}}</td>
+                    <td>{{item.price}}</td>
+                    <td>
+                        <a class="btn btn-sm btn-success" href="{% url 'update' item.id %}">Edit</a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete' item.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        
+        </table>
+    </div>
+
+    <div class="container text-center my-3">
+        <a class="btn btn-outline-success" href="{% url 'add' %}">Add Items</a>
+    </div>
+
+{% endblock %}
